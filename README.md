@@ -130,3 +130,4 @@ routes → services → db / llm
 - Backend secrets are configured via the hosting platform
 - Frontend uses `VITE_API_URL` to point to the deployed backend
 - No secrets are exposed to the client
+- **Note**: The deployed version may return a fallback response if the free-tier LLM quota is exceeded.

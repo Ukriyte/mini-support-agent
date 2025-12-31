@@ -85,6 +85,7 @@ routes → services → db / llm
 - Clear separation of concerns
 - Stateless backend (session ID passed from frontend)
 - Easy to swap LLM providers (e.g., Gemini, OpenAI)
+- The backend is channel-agnostic; chat is treated as a generic message stream, making it easy to add additional channels (e.g., WhatsApp, Instagram) without changing core business logic.
 
 ## 🤖 LLM Notes
 

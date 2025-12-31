@@ -11,8 +11,8 @@ A minimal AI-powered customer support chat widget that simulates a live support 
 cd backend
 npm install
 ```
-.env
-```bash
+Create `.env`:
+```env
 PORT=3001
 GEMINI_API_KEY=your_api_key
 ```
@@ -24,8 +24,16 @@ npm run dev
 ```bash
 cd frontend
 npm install
+```
+Create `.env`:
+```env
+VITE_API_URL=http://localhost:3001
+```
+Run:
+```bash
 npm run dev
 ```
+
 ## 🗄 Database Setup
 
 - Uses **SQLite** via [`better-sqlite3`](https://www.npmjs.com/package/better-sqlite3)
@@ -45,10 +53,15 @@ rm chat.db
 
 ## 🔐 Environment Variables
 
-The backend requires the following environment variables:
+Backend Environment Variables:
 
 - `GEMINI_API_KEY` – Google Gemini API key (free tier supported)
 - `PORT` – Port on which the backend server runs
+
+Frontend Environment Variables:
+
+- `VITE_API_URL` – Base URL of the backend API
+
 
 > 🔒 Secrets are never committed to the repository.
 
@@ -108,3 +121,11 @@ routes → services → db / llm
 - Store FAQs in the database instead of embedding them in the prompt
 - Introduce basic analytics and usage metrics
 - Add unit and integration test coverage
+
+
+## 🚀 Deployment Notes
+
+- Frontend and backend are deployed separately
+- Backend secrets are configured via the hosting platform
+- Frontend uses `VITE_API_URL` to point to the deployed backend
+- No secrets are exposed to the client

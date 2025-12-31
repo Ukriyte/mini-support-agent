@@ -3,6 +3,7 @@ import { useEffect, useRef } from "react";
 import './App.css'
 
 function App() {
+  const API_URL = import.meta.env.VITE_API_URL;
   const MAX_MESSAGE_LENGTH = 1000;
   const [sessionId, setSessionId] = useState(localStorage.getItem("sessionId"));
   const [messages, setMessages] = useState([]);
@@ -12,7 +13,10 @@ function App() {
 
   useEffect(() => {
   if (!sessionId) return;
-  fetch(`http://localhost:3001/chat/history/${sessionId}`)
+  if (!API_URL) {
+    console.error("VITE_API_URL not set");
+  }
+  fetch(`${API_URL}/chat/history/${sessionId}`)
     .then(res => res.json())
     .then(data => {
       if (data.messages) {
@@ -56,7 +60,7 @@ function App() {
   ]);
 
   try {
-    const res = await fetch("http://localhost:3001/chat/message", {
+    const res = await fetch(`${API_URL}/chat/message`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"

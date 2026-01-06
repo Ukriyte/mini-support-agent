@@ -73,7 +73,7 @@ function App() {
     if (!res.ok) throw new Error("Request failed");
     const data = await res.json();
 
-    if (data.sessionId && !sessionId) {
+    if (data.sessionId && data.sessionId !== sessionId) {
       setSessionId(data.sessionId);
       localStorage.setItem("sessionId", data.sessionId);
     }
